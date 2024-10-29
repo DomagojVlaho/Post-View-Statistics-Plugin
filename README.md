@@ -5,10 +5,7 @@ A plugin that shows the single post view count in the wp-admin backend.
 
 
 ## Quick start
-
-To quickly create a running local development environment, I suggest using [Local by Flywheel](https://localwp.com/) to set up a basic Wordpress installation.
-
-After the installation is complete and you can open the site in browser, navigate to the local site folder and follow the sturcture to the main wp-content->plugins folder.  
+ 
 Use this command list to quickly set up this project locally and start developing more custom components:
 
 ```
