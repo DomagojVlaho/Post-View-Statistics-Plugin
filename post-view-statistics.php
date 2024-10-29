@@ -3,7 +3,7 @@
  * Plugin Name
  *
  * Plugin Name: Post View Statistics
- * Plugin URI:  https://github.com/DomagojVlaho/post-view-wordpress-plugin/
+ * Plugin URI:  https://github.com/DomagojVlaho/Post-View-Statistics-Plugin
  * Description: A plugin that shows the single post view count in the wp-admin backend
  * Version:     1.0.0
  * Author:      DomagojVlaho
