@@ -1,0 +1,52 @@
+{
+  "name": "zip-cli",
+  "version": "0.0.0",
+  "author": "IKatsuba @IKatsuba",
+  "bin": {
+    "zip-cli": "./bin/run"
+  },
+  "bugs": "https://github.com/prologify/zip-cli/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.19",
+    "@oclif/config": "^1.14.0",
+    "@oclif/plugin-help": "^2.2.3",
+    "adm-zip": "^0.4.14",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.2",
+    "@oclif/test": "^1.2.5",
+    "@types/adm-zip": "^0.4.32",
+    "@types/chai": "^4.2.8",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.17.14",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "homepage": "https://github.com/prologify/zip-cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "bin": "zip-cli"
+  },
+  "repository": "prologify/zip-cli",
+  "scripts": {
+    "prepack": "rm -rf lib && tsc -b && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
