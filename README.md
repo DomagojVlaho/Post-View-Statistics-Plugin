@@ -6,7 +6,7 @@ A plugin that shows the single post view count in the wp-admin backend.
 
 ## Quick start
  
-Use this command list to quickly set up this project locally and start developing more custom components:
+Use this command list to quickly set up this project locally and start working on the plugin:
 
 ```
 // Clone this repo
