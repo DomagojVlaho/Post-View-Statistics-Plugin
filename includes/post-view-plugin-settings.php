@@ -20,10 +20,40 @@ add_action('admin_menu', 'post_view_add_settings_page');
 
 // Callback function to render the plugin settings page
 
-function post_view_render_settings_page(){ ?>
+function post_view_render_settings_page(){
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'post_views';
+    $date_14_days_ago = date('Y-m-d H:i:s', strtotime('-14 days'));
+
+     // Daily view counts for all posts
+     $daily_view_counts = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT DATE(view_date) as view_date, SUM(view_count) as total_views 
+            FROM $table_name 
+            WHERE view_date >= %s 
+            GROUP BY DATE(view_date) 
+            ORDER BY view_date DESC",
+            $date_14_days_ago
+        )
+    );
+
+    // Prepare data for the chart
+    $dates = [];
+    $counts = [];
+    foreach ($daily_view_counts as $day) {
+        $dates[] = $day->view_date;
+        $counts[] = $day->total_views;
+    }
+    ?>
     <div class="wrap">
         <h1><?php echo esc_html__('Post View Plugin Settings', 'post-view'); ?></h1>
         <p><?php echo esc_html__('This is the settings page for Plugin Name.', 'post-view'); ?></p>
+        <div>
+            <h2><?php echo esc_html__('Total post views for the last 14 days', 'post-view'); ?></h2>
+            <p><?php echo esc_html__('The chart shows the total sum of all post views for the last 14 days.', 'post-view'); ?></p>
+            <canvas id="pvsChart" width="400" height="200"></canvas>
+            <?php echo '<script id="pvsChartData" type="application/json">' . json_encode(array('dates' => array_reverse($dates), 'counts' => array_reverse($counts))) . '</script>'; ?>
+        </div>
         <div>
             <h2><?php echo esc_html__('Plugin screenshots', 'post-view'); ?></h2>
             <p><?php echo esc_html__('Open up your single post editing screen.', 'post-view'); ?></p>
